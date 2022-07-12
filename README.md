@@ -2,6 +2,22 @@
 
 > The following is a tool that can be used to convert .root files that describe a particular geometry to GLTF format, compatible with the [phoenix](https://github.com/HSF/phoenix) framework for visualization
 
+## Quickstart for EIC
+
+The conversion starts from the TGeo/DD4hep ROOT description as produced by the continuous integration pipeline. Download the geometry .root file artifact for the latest successful job with, for example,
+```console
+wget -O eic.root https://eicweb.phy.anl.gov/EIC/detectors/ecce/-/jobs/artifacts/main/raw/geo/detector_geo_central.root?job=dump_geometry
+```
+This will store this file with the name `eic.root` in this repository's directory.
+
+Start the python webserver with the `./run` script:
+```console
+./run
+```
+Navigate to the `export_EIC.html` page at the URL indicated by the previous script, i.e. typically http://127.0.0.1:8000/export_EIC.html. This will start the conversion process and automatically start the download of the resulting `eic.gltf` file.
+
+To hide or add which detectors are exported, modify the entries in the `hide_children` and `subparts` variables in the file `export_EIC.html`, respectively. Faster event display performance will benefit from restraint in adding geometry elements.
+
 ## Dependencies
 
 The exporter is using several javascript libraries, most importantly [jsroot](https://github.com/root-project/jsroot) and [three.js](https://threejs.org). However, there is no need ot install them on your machine if you're happy with the default version used from the Web.

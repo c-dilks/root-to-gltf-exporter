@@ -1,0 +1,28 @@
+<html>
+
+  <head>
+    <script src="https://unpkg.com/three@0.139.1/build/three.js"> </script>
+    <script src="https://unpkg.com/three@0.139.1/examples/js/exporters/GLTFExporter.js"> </script>
+    <script src="https://root.cern/js/latest/scripts/JSRoot.core.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+  </head>
+
+<body>
+  <script type="module">
+
+    import { convertGeometry } from './phoenixExport.js';
+
+    var hide_children = [
+        "slice1_",
+    ];
+
+    // for each level of hierarchy in the phoenix menu, tell which parts of the geometry to
+    // use and whether they are initially visible or not.
+    var subparts = {
+        "Ecal > Barrel" : [["SciGlassModule"], true],
+    }
+
+    convertGeometry("eic.root", "eic.gltf", 4, subparts, hide_children, "default");
+
+  </script>
+</body>

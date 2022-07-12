@@ -13,13 +13,27 @@
     import { convertGeometry } from './phoenixExport.js';
 
     var hide_children = [
-        "slice1_",
+        "SolenoidEndcapN_layer",
+        "SolenoidEndcapP_layer",
     ];
 
     // for each level of hierarchy in the phoenix menu, tell which parts of the geometry to
     // use and whether they are initially visible or not.
     var subparts = {
-        "Ecal > Barrel" : [["SciGlassModule"], true],
+        "Solenoid" : [[
+            "SolenoidBarrel_assembly",
+            "SolenoidEndcapP",
+            "SolenoidEndcapN",
+        ], 0.1],
+        "Tracking > Vertex" : [[
+            "VertexBarrelSubAssembly",
+        ], 0.8],
+        "Tracking > Trackers" : [[
+            "InnerTrackerSubAssembly",
+            "MedialTrackerSubAssembly",
+            "OuterTrackerSubAssembly",
+            "ForwardBackwardTrackerSubAssembly",
+        ], true],
     }
 
     convertGeometry("eic.root", "eic.gltf", 4, subparts, hide_children, "default");

@@ -20,20 +20,9 @@
     // for each level of hierarchy in the phoenix menu, tell which parts of the geometry to
     // use and whether they are initially visible or not.
     var subparts = {
-        "Solenoid" : [[
-            "SolenoidBarrel_assembly",
-            "SolenoidEndcapP",
-            "SolenoidEndcapN",
-        ], 0.1],
-        "Tracking > Vertex" : [[
-            "VertexBarrelSubAssembly",
+        "DRICH" : [[
+            "DRICH",
         ], 0.8],
-        "Tracking > Trackers" : [[
-            "InnerTrackerSubAssembly",
-            "MedialTrackerSubAssembly",
-            "OuterTrackerSubAssembly",
-            "ForwardBackwardTrackerSubAssembly",
-        ], 0.5],
     }
 
     convertGeometry("eic.root", "eic.gltf", 4, subparts, hide_children, "default");
